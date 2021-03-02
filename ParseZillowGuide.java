@@ -7,7 +7,7 @@ import org.jsoup.select.Elements;
 
 /*
  * This class is used for HTML parsing from URL using Jsoup.
- * @author Andrew Schwartz
+ * @author
  */
 
 public class ParseZillowGuide {
