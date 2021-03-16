@@ -7,7 +7,7 @@ import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.select.Elements;
 
-public class soupInputTest {
+public class soupTargetTest {
 	public static void main(String args[]){
 		print("running...");
 		Document document;
