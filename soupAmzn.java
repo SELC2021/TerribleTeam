@@ -15,6 +15,7 @@ import org.jsoup.select.Elements;
 public class soupAmzn {
 	private Document document;
 	private Scanner sc;
+	private String asinID;
 	private String url;
 	private String currPrice;
 	private String prevPrice;
@@ -22,13 +23,16 @@ public class soupAmzn {
 	
 	soupAmzn() {
 		sc = new Scanner(System.in);
+		asinID = new String();
 		url = new String();
 	}
 	
 	void getURL() {
-		System.out.print("Enter Item URL From Amazon: ");
-		
-		url = sc.next();
+		System.out.print("Enter Item ASIN ID From Amazon: ");
+		asinID = sc.next();
+		url = "https://www.amazon.com/gp/product/" + asinID; 
+		cartLink = "https://www.amazon.com/gp/aws/cart/add.html?&ASIN.1=" + asinID + "&Quantity.1=1";
+		// url = sc.next();
 	}
 	
 	void getDocPrice() {
@@ -39,7 +43,6 @@ public class soupAmzn {
 			e.printStackTrace();
 		}
 		Elements price = document.select("span#price_inside_buybox"); //get price
-		Elements asinID = document.select(".a-size-base.prodDetAttrValue");
 		
 		for (int i=0; i < price.size(); i++) {			
 			prevPrice = currPrice;
@@ -47,16 +50,16 @@ public class soupAmzn {
 			 
 			if (currPrice.equals(prevPrice) || (i == 0)) {
 				System.out.print("Price has not changed: ");
+				System.out.println(currPrice);
+				System.out.println("Link: " + cartLink);
 			} else {
 				System.out.print("PRICE HAS CHANGED: ");
+				System.out.println(currPrice);
+				System.out.println("Link: " + cartLink);
 			}
 			// System.out.println(price.get(i).text());
-			System.out.println(currPrice);
-			}
-		System.out.println("*** asinID.size() = " + asinID.size()); // checking to see if it read it
-		for (int i = 0; i < asinID.size(); i++) {
-			cartLink = asinID.get(i).text();
-			System.out.println(cartLink);
+			// System.out.println(currPrice);
+			
 		}
 	}
 }
