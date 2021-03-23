@@ -27,7 +27,7 @@ public class soupAmzn {
 		url = sc.next();
 	}
 	
-	void getDocPrice() {
+	int getDocPrice() {
 		try {
 			document = Jsoup.connect(url).get();
 		} catch (IOException e) { 
@@ -35,8 +35,32 @@ public class soupAmzn {
 			e.printStackTrace();
 		}
 		Elements price = document.select("span#price_inside_buybox"); //get price
+<<<<<<< Updated upstream
 		for (int i=0; i < price.size(); i++) {
 			System.out.println(price.get(i).text());
 			}
 	}
 }
+=======
+		
+		for (int i=0; i < price.size(); i++) {			
+			prevPrice = currPrice;
+			currPrice = price.get(i).text();
+			 
+			if (currPrice.equals(prevPrice) || (i == 0)) {
+				System.out.print("Price has not changed: ");
+				System.out.println(currPrice);
+				//System.out.println("Link: " + cartLink);
+			} else {
+				System.out.println("");
+				System.out.print("PRICE HAS CHANGED: ");
+				System.out.println(currPrice);
+				System.out.println("Link: " + cartLink);
+				System.out.println("");
+			}			
+		}
+		return 0;
+	}
+	
+}
+>>>>>>> Stashed changes
