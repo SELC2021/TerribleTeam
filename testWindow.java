@@ -16,15 +16,26 @@ public class testWindow {
 	public testWindow(String currPrice) {
 		JFrame frame = new JFrame();
 		
-		JButton button = new JButton("Current Price");
+		String asinID;
+		String prevPrice;
 		
-		JTextArea textArea = new JTextArea("Some text\nSome other text");
+		//JButton button = new JButton("Current Price");
+		
+		JTextArea textArea = new JTextArea("Enter ASIN ID Here");
+		
+		JTextArea priceText = new JTextArea("Enter your desired price");
 		
 		JPanel panel = new JPanel();
-		panel.setBorder(BorderFactory.createEmptyBorder(100, 300, 100, 300));
+		panel.setBorder(BorderFactory.createEmptyBorder(50, 150, 50, 150));
 		panel.setLayout(new GridLayout(0, 1));
-		panel.add(button);
-		
+		//panel.add(button);
+		panel.add(textArea);
+		textArea.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    textArea.setBounds(50, 50, 150, 150);
+	    
+	    panel.add(priceText);
+	    priceText.setBorder(BorderFactory.createEmptyBorder(10, 10, 10, 10));
+	    priceText.setBounds(50, 50, 150, 150);
 		
 		
 		frame.add(panel, BorderLayout.CENTER);
@@ -34,15 +45,17 @@ public class testWindow {
 		frame.setVisible(true);
 		
 		
+		asinID = textArea.getText();
+		prevPrice = priceText.getText();
 		
-		panel.add(textArea);
-	    textArea.setBounds(50, 50, 150, 150);
 	}
 
 
 	
 		
 	}
+
+		
 
 		
 
