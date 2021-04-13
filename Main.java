@@ -1,4 +1,6 @@
 package testing;
+import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -16,13 +18,24 @@ public class Main {
 		Timer timer = new Timer();
 		timer.schedule(new TimerTask() {
 		    public void run() {
-		    pg.getDocPrice();
+		    try {
+		    	
+				pg.getDocPrice();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (URISyntaxException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		    //System.out.println("check");
 		    //function that checks to see if the price is right or not 
 		    
 		    }
-		    }, 500, 1000 );
+			}, 500, 1000 );
 		      
 	}
 }
+
 
 
