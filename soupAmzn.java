@@ -1,6 +1,6 @@
 package testing;
 
-import java.io.IOException;
+import java.io.*;
 
 
 import javax.swing.JOptionPane;
@@ -12,6 +12,7 @@ import org.jsoup.select.Elements;
 import java.awt.Desktop;
 import java.net.URI;
 import java.net.URISyntaxException;
+
 /** 
  * STEP 1: make a new soupAmzn() object
  * TWO COMMANDS: getUrl() and getDocPrice()
@@ -35,9 +36,8 @@ public class soupAmzn {
 	
 	void getURL() {
 		String asinID = JOptionPane.showInputDialog(null, "Enter the item's ASIN ID here:");
-		
+		asinID = asinID.trim();
 	
-		
 		System.out.println("Your ASIN ID is " + asinID);
 		
 		url = "https://www.amazon.com/gp/product/" + asinID; 
@@ -54,11 +54,17 @@ public class soupAmzn {
 		}
 		Elements price = document.select("span#price_inside_buybox"); //get price
 		
+		if (price.size() == 0) {
+			System.out.print(".");
+		} else {
+			System.out.println("");
+		}
 		
 		for (int i=0; i < price.size(); i++) {			
-			//prevPrice = currPrice;
 			prevPrice = currPrice;
 			currPrice = price.get(i).text();
+			
+			System.out.print("[ " + prevPrice + " // " + currPrice + " ] ");
 			 
 			if (currPrice.equals(prevPrice) || prevPrice == null) {
 				System.out.print("Price has not changed: ");
