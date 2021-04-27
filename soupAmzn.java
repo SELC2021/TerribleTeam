@@ -35,7 +35,7 @@ public class soupAmzn {
 	}
 
 	void getURL() {
-		String asinID = JOptionPane.showInputDialog(null, "Enter the item's ASIN ID here:");
+		asinID = JOptionPane.showInputDialog(null, "Enter the item's ASIN ID here:");
 		asinID = asinID.trim();
 
 		System.out.println("Your ASIN ID is " + asinID);
@@ -93,11 +93,8 @@ public class soupAmzn {
 						e.printStackTrace();
 					}
 
-				}
-
+				} 
 			}
 		}
-
 	}
-
 }
